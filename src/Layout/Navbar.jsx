@@ -46,7 +46,7 @@ const Navbar = () => {
           </ul>
         </div>
         <p className="font-bold text-green-500" id="logo">
-          IGNITION<span className="text-red-500">PULSE</span>
+          Ignition<span className="text-red-500">Pulse</span>
         </p>
       </div>
       <div className="navbar-center hidden lg:flex ml-16">

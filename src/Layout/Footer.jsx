@@ -16,7 +16,7 @@ const Footer = () => {
           </svg>
 
           <p className="font-bold text-green-500" id="logo">
-            IGNITION<span className="text-red-500">PULSE</span>
+            Ignition<span className="text-red-500">Pulse</span>
           </p>
           <p>Providing reliable tech since 2023</p>
         </aside>
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
           <p>
             Copyright © 2023 - All right reserved by{" "}
-            <span className="font-bold text-xl">IGNITIONPULSE</span>
+            <span className="font-bold text-xl">IgnitionPulse</span>
           </p>
         </nav>
       </footer>
