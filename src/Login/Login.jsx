@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import login from "../assets/login.png";
 
 import PageTitle from "../Helmet/PageTitle";
 import useAuth from "../hook/useAuth";
@@ -41,21 +42,17 @@ const Login = () => {
   };
   return (
     <div className="hero min-h-screen bg-base-200">
+      <img src={login} alt="" />
       <PageTitle title="Login | IgnitionPulse"></PageTitle>
-      <div className="hero-content flex-col md:flex-row">
-        <div className="text-center md:w-1/2 lg:text-left">
+      <div className="hero-content flex-col ">
+        <div className="text-center ">
           <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
         </div>
-        <div className="card flex-shrink-0 md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0  max-w-sm ">
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text font-bold">Email</span>
               </label>
               <input
                 type="email"
@@ -67,7 +64,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text font-bold">Password</span>
               </label>
               <input
                 type="password"
@@ -84,16 +81,16 @@ const Login = () => {
             </div>
 
             <div className="form-control mt-5">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input className="btn btn-outline" type="submit" value="Login" />
             </div>
           </form>
           <div className="text-center -mt-5">
             <div>
               <SocialLogin></SocialLogin>
             </div>
-            <p>
+            <p className="my-2 font-semibold">
               New Here?{" "}
-              <span className="text-lg text-primary font-semibold">
+              <span className="text-lg text-primary font-bold">
                 <Link to="/register">Register Now</Link>
               </span>
             </p>
