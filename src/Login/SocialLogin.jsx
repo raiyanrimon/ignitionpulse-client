@@ -2,12 +2,15 @@ import { FaGoogle } from "react-icons/fa";
 
 import useAuth from "../hook/useAuth";
 import useAxiosOpen from "../hook/useAxiosOpen";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
   const axiosOpen = useAxiosOpen();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
       console.log(result.user);
@@ -17,8 +20,27 @@ const SocialLogin = () => {
       };
       axiosOpen.post("/users", userInfo).then((res) => {
         console.log(res.data);
+
         navigate("/");
       });
+      Swal.fire({
+        title: "User Logged in Successfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+      });
+      navigate(from, { replace: true });
     });
   };
   return (
