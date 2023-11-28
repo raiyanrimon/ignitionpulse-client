@@ -20,7 +20,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/cart">
+                <NavLink to="/dashboard/myProduct">
                   <FaProductHunt></FaProductHunt>My Products
                 </NavLink>
               </li>
