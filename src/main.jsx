@@ -9,6 +9,8 @@ import Home from "./Home/Home";
 import Login from "./Login/Login";
 import AuthProvider from "./Provider/AuthProvider";
 import Register from "./Registration/Register";
+import Dashboard from "./Layout/Dashboard";
+import ProfilePage from "./Dashboard/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,16 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "profile",
+        element: <ProfilePage></ProfilePage>,
       },
     ],
   },
