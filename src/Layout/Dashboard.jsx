@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <div>
       <div className="flex">
-        <div className="w-64 min-h-full bg-orange-300">
+        <div className="w-64 min-h-full bg-green-300">
           <ul className="menu p-4">
             <>
               <li>

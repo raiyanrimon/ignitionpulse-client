@@ -1,7 +1,9 @@
 import { useLoaderData } from "react-router-dom";
+import Reviews from "./Reviews";
+import ReviewForm from "./ReviewForm";
 
 const ProductDetails = () => {
-  const { name, image, description, tags, link, vote } = useLoaderData();
+  const { name, image, description, tags, link, vote, _id } = useLoaderData();
 
   return (
     <div className="text-justify space-y-2">
@@ -28,6 +30,8 @@ const ProductDetails = () => {
           <span key={index}>#{tag} </span>
         ))}
       </div>
+      <Reviews _id={_id}></Reviews>
+      <ReviewForm _id={_id}></ReviewForm>
     </div>
   );
 };
