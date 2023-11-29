@@ -1,5 +1,11 @@
+import PageTitle from "../Helmet/PageTitle";
+
 const ReportedProduct = () => {
-  return <div></div>;
+  return (
+    <div>
+      <PageTitle title="Reported Product | IgnitionPulse" />
+    </div>
+  );
 };
 
 export default ReportedProduct;

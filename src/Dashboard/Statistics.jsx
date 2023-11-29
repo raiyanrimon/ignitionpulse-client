@@ -1,5 +1,11 @@
+import PageTitle from "../Helmet/PageTitle";
+
 const Statistics = () => {
-  return <div></div>;
+  return (
+    <div>
+      <PageTitle title="Stats | IgnitionPulse" />
+    </div>
+  );
 };
 
 export default Statistics;

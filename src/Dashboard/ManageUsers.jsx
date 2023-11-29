@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import { FaUser, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import PageTitle from "../Helmet/PageTitle";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -44,6 +45,7 @@ const ManageUsers = () => {
 
   return (
     <div>
+      <PageTitle title="Users | IgnitionPulse" />
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
