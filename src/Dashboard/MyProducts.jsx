@@ -5,14 +5,18 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import PageTitle from "../Helmet/PageTitle";
 import { Link } from "react-router-dom";
+import useAuth from "../hook/useAuth";
 
 const MyProducts = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const { data: products = [], refetch } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products");
-      return res.data;
+      if (user?.email) {
+        const res = await axiosSecure.get(`/products/user/${user?.email}`);
+        return res.data;
+      }
     },
   });
 

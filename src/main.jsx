@@ -16,6 +16,12 @@ import MyProducts from "./Dashboard/MyProducts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UpdateProduct from "./Dashboard/UpdateProduct";
 import ProductDetails from "./ProductDetails/ProductDetails";
+import Products from "./Products/Products";
+import ProductReview from "./Dashboard/ProductReview";
+import ReportedProduct from "./Dashboard/ReportedProduct";
+import ManageUsers from "./Dashboard/ManageUsers";
+import ManageCoupon from "./Dashboard/ManageCoupon";
+import Statistics from "./Dashboard/Statistics";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -35,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "products",
+        element: <Products></Products>,
       },
       {
         path: "update/:id",
@@ -65,6 +75,26 @@ const router = createBrowserRouter([
       {
         path: "myProduct",
         element: <MyProducts></MyProducts>,
+      },
+      {
+        path: "productReview",
+        element: <ProductReview></ProductReview>,
+      },
+      {
+        path: "reportedProduct",
+        element: <ReportedProduct></ReportedProduct>,
+      },
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "coupons",
+        element: <ManageCoupon></ManageCoupon>,
+      },
+      {
+        path: "stats",
+        element: <Statistics></Statistics>,
       },
     ],
   },
