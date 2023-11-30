@@ -84,20 +84,32 @@ const ProductReview = () => {
                   <Link to={`/products/${product._id}`}>Details</Link>
                 </td>
                 <td>
-                  <FaFileSignature
-                    onClick={() => handleFeature(product)}
-                    className="text-xl"
-                  ></FaFileSignature>
+                  {product.isFeatured === "featured" ? (
+                    "Featured"
+                  ) : (
+                    <FaFileSignature
+                      onClick={() => handleFeature(product)}
+                      className="text-xl"
+                    ></FaFileSignature>
+                  )}
                 </td>
                 <td>
-                  <button onClick={() => handleAccept(product)}>
-                    <FaArrowUp></FaArrowUp>
-                  </button>
+                  {product.status === "accepted" ? (
+                    "Accepted"
+                  ) : (
+                    <button onClick={() => handleAccept(product)}>
+                      <FaArrowUp></FaArrowUp>
+                    </button>
+                  )}
                 </td>
                 <td>
-                  <button onClick={() => handleReject(product)}>
-                    <FaArrowDown></FaArrowDown>
-                  </button>
+                  {product.status === "rejected" ? (
+                    "Rejected"
+                  ) : (
+                    <button onClick={() => handleReject(product)}>
+                      <FaArrowDown></FaArrowDown>
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

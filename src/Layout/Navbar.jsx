@@ -72,7 +72,7 @@ const Navbar = () => {
               </summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                 <li>
-                  <Link to="/dashboard/profile">DashBoard</Link>
+                  <Link to="/dashboard">DashBoard</Link>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>LogOut</button>

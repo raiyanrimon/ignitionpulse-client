@@ -22,6 +22,9 @@ import ReportedProduct from "./Dashboard/ReportedProduct";
 import ManageUsers from "./Dashboard/ManageUsers";
 import ManageCoupon from "./Dashboard/ManageCoupon";
 import Statistics from "./Dashboard/Statistics";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import ModRoute from "./PrivateRoute/ModRoute";
+import AdminRoute from "./PrivateRoute/AdminRoute";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -48,13 +51,21 @@ const router = createBrowserRouter([
       },
       {
         path: "update/:id",
-        element: <UpdateProduct></UpdateProduct>,
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "products/:id",
-        element: <ProductDetails></ProductDetails>,
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.id}`),
       },
@@ -62,39 +73,76 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "profile",
-        element: <ProfilePage></ProfilePage>,
+        element: (
+          <PrivateRoute>
+            <ProfilePage></ProfilePage>
+          </PrivateRoute>
+        ),
       },
       {
         path: "addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myProduct",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <PrivateRoute>
+            <MyProducts></MyProducts>
+          </PrivateRoute>
+        ),
       },
+      // moderator route
       {
         path: "productReview",
-        element: <ProductReview></ProductReview>,
+        element: (
+          <ModRoute>
+            <ProductReview></ProductReview>
+          </ModRoute>
+        ),
       },
       {
         path: "reportedProduct",
-        element: <ReportedProduct></ReportedProduct>,
+        element: (
+          <ModRoute>
+            <ReportedProduct></ReportedProduct>
+          </ModRoute>
+        ),
       },
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "coupons",
-        element: <ManageCoupon></ManageCoupon>,
+        element: (
+          <AdminRoute>
+            <ManageCoupon></ManageCoupon>
+          </AdminRoute>
+        ),
       },
       {
         path: "stats",
-        element: <Statistics></Statistics>,
+        element: (
+          <AdminRoute>
+            <Statistics></Statistics>
+          </AdminRoute>
+        ),
       },
     ],
   },

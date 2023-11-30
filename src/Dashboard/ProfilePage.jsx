@@ -9,9 +9,12 @@ const ProfilePage = () => {
   return (
     <div className="text-justify space-y-3">
       <PageTitle title="Profile | IgnitionPulse" />
-      <h2 className="text-xl  font-semibold ">Welcome {user?.displayName}</h2>
 
-      <img src={user?.photoURL} alt={user?.displayName} />
+      <div className="avatar">
+        <div className="w-24 rounded-full">
+          <img src={user?.photoURL} />
+        </div>
+      </div>
 
       <p>User Name: {user?.displayName}</p>
 

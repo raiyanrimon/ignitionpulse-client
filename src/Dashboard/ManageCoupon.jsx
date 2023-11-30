@@ -1,11 +1,5 @@
-import PageTitle from "../Helmet/PageTitle";
-
 const ManageCoupon = () => {
-  return (
-    <div>
-      <PageTitle title="Coupons | IgnitionPulse" />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ManageCoupon;
