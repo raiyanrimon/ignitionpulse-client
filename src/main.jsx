@@ -25,6 +25,8 @@ import Statistics from "./Dashboard/Statistics";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ModRoute from "./PrivateRoute/ModRoute";
 import AdminRoute from "./PrivateRoute/AdminRoute";
+import Payment from "./Dashboard/Payment";
+import AboutUs from "./AboutUs/AboutUs";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products></Products>,
+      },
+      {
+        path: "aboutUs",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "update/:id",
@@ -102,6 +108,10 @@ const router = createBrowserRouter([
             <MyProducts></MyProducts>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
       // moderator route
       {

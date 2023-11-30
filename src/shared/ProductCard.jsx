@@ -1,23 +1,57 @@
-const ProductCard = () => {
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hook/useAuth";
+import useAxiosSecure from "../hook/useAxiosSecure";
+import Swal from "sweetalert2";
+
+const ProductCard = ({ product }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+  const productOwner = user?.email === product?.email;
+  const handleUpvote = (id) => {
+    if (!user) {
+      return navigate("/login");
+    }
+    if (user) {
+      axiosSecure.patch(`/products/upvote/${id}`).then((res) => {
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Product Upvoted SuccessFully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    }
+  };
+
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card h-96 bg-base-100 shadow-xl">
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-          />
+          <img src={product.image} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
-            Shoes!
-            <div className="badge badge-secondary">NEW</div>
-          </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+          <Link to={`/products/${product._id}`}>
+            <h2 className="card-title">{product.name}</h2>
+          </Link>
+
+          <div className="card-actions my-2 ">
+            {product.tags.map((tag, index) => (
+              <div key={index} className="badge badge-secondary">
+                {tag}
+              </div>
+            ))}
           </div>
+          <button
+            disabled={productOwner}
+            onClick={() => handleUpvote(product._id)}
+            className="btn btn-accent"
+          >
+            Upvote
+          </button>
         </div>
       </div>
     </div>

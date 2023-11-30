@@ -22,24 +22,6 @@ const Dashboard = () => {
       <div className="flex">
         <div className="w-64 min-h-full bg-green-300">
           <ul className="menu p-4">
-            <>
-              <li>
-                <NavLink to="/dashboard/profile">
-                  <FaUser></FaUser> My Profile
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/addProduct">
-                  <FaAd></FaAd>Add Product
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/myProduct">
-                  <FaProductHunt></FaProductHunt>My Products
-                </NavLink>
-              </li>
-            </>
             {isAdmin && (
               <>
                 <li>
@@ -59,6 +41,25 @@ const Dashboard = () => {
                 </li>
               </>
             )}
+            <>
+              <li>
+                <NavLink to="/dashboard/profile">
+                  <FaUser></FaUser> My Profile
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/addProduct">
+                  <FaAd></FaAd>Add Product
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myProduct">
+                  <FaProductHunt></FaProductHunt>My Products
+                </NavLink>
+              </li>
+            </>
+
             {isMod && (
               <>
                 {" "}
@@ -85,10 +86,7 @@ const Dashboard = () => {
         </div>
         <div className="flex-1 p-8">
           <p className="text-2xl font-semibold">
-            Welcome Mr.{" "}
-            <span className="font-bold text-green-400s">
-              {user?.displayName}
-            </span>
+            Welcome Mr. <span>{user?.displayName}</span>
           </p>
           <Outlet></Outlet>
         </div>

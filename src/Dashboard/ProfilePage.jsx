@@ -1,11 +1,10 @@
-import { useState } from "react";
 import PageTitle from "../Helmet/PageTitle";
 import useAuth from "../hook/useAuth";
 import { MdVerified } from "react-icons/md";
 
 const ProfilePage = () => {
   const { user } = useAuth();
-  const [isSubscribed, setIsSubscribed] = useState(false);
+
   return (
     <div className="text-justify space-y-3">
       <PageTitle title="Profile | IgnitionPulse" />
@@ -20,20 +19,18 @@ const ProfilePage = () => {
 
       <p>User Email: {user?.email}</p>
 
-      {isSubscribed ? (
-        <>
-          <p>
-            Subscription Status:{" "}
-            <span className=" font-semibold flex">
-              Verified <MdVerified className="text-blue-500 text-lg" />
-            </span>
-          </p>
-        </>
-      ) : (
-        <>
-          <button className="btn btn-accent">Subscribe $10/month</button>
-        </>
-      )}
+      <>
+        <p>
+          Subscription Status:{" "}
+          <span className=" font-semibold flex">
+            Verified <MdVerified className="text-blue-500 text-lg" />
+          </span>
+        </p>
+      </>
+
+      <>
+        <button className="btn btn-accent">Subscribe $10/month</button>
+      </>
     </div>
   );
 };
