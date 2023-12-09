@@ -63,7 +63,7 @@ const Register = () => {
                 {...register("name", { required: true })}
                 name="name"
                 placeholder="Your Full Name"
-                className="input input-bordered"
+                className="input input-bordered text-black"
               />
               {errors.name && <span>Name is required</span>}
             </div>

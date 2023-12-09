@@ -1,7 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../hook/useAxiosSecure";
-
 import useAuth from "../hook/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -18,15 +17,14 @@ const CheckoutForm = () => {
   const navigate = useNavigate();
 
   const totalPrice = 10;
+
   useEffect(() => {
-    if (totalPrice > 0) {
-      axiosSecure
-        .post("/create-payment-intent", { price: totalPrice })
-        .then((res) => {
-          console.log(res.data.clientSecret);
-          setClientSecret(res.data.clientSecret);
-        });
-    }
+    axiosSecure
+      .post("/create-payment-intent", { price: totalPrice })
+      .then((res) => {
+        console.log(res.data.clientSecret);
+        setClientSecret(res.data.clientSecret);
+      });
   }, [axiosSecure, totalPrice]);
 
   const handleSubmit = async (event) => {
@@ -77,7 +75,7 @@ const CheckoutForm = () => {
 
         // now save the payment in the database
         const payment = {
-          email: user.email,
+          email: user?.email,
           price: totalPrice,
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js to
@@ -86,12 +84,11 @@ const CheckoutForm = () => {
 
         const res = await axiosSecure.post("/payments", payment);
         console.log("payment saved", res.data);
-
         if (res.data?.paymentResult?.insertedId) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
-            title: "Thank you for the taka paisa",
+            title: "Thank you for Subscription",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -122,7 +119,7 @@ const CheckoutForm = () => {
       <button
         className="btn btn-sm btn-primary my-4"
         type="submit"
-        disabled={!stripe || !clientSecret}
+        // disabled={!stripe || !clientSecret}
       >
         Pay
       </button>

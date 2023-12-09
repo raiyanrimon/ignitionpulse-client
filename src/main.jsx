@@ -16,7 +16,7 @@ import MyProducts from "./Dashboard/MyProducts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UpdateProduct from "./Dashboard/UpdateProduct";
 import ProductDetails from "./ProductDetails/ProductDetails";
-import Products from "./Products/Products";
+
 import ProductReview from "./Dashboard/ProductReview";
 import ReportedProduct from "./Dashboard/ReportedProduct";
 import ManageUsers from "./Dashboard/ManageUsers";
@@ -27,6 +27,7 @@ import ModRoute from "./PrivateRoute/ModRoute";
 import AdminRoute from "./PrivateRoute/AdminRoute";
 import Payment from "./Dashboard/Payment";
 import AboutUs from "./AboutUs/AboutUs";
+import Products from "./Products/Products";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -63,7 +64,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            ` https://ignitionpulse-server.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "products/:id",
@@ -73,7 +76,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            ` https://ignitionpulse-server.vercel.app/products/${params.id}`
+          ),
       },
     ],
   },

@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import PageTitle from "../Helmet/PageTitle";
 import useAuth from "../hook/useAuth";
-import { MdVerified } from "react-icons/md";
 
 const ProfilePage = () => {
   const { user } = useAuth();
@@ -19,17 +19,19 @@ const ProfilePage = () => {
 
       <p>User Email: {user?.email}</p>
 
-      <>
+      {/* <>
         <p>
           Subscription Status:{" "}
           <span className=" font-semibold flex">
             Verified <MdVerified className="text-blue-500 text-lg" />
           </span>
         </p>
-      </>
+      </> */}
 
       <>
-        <button className="btn btn-accent">Subscribe $10/month</button>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-accent">Subscribe $10/month</button>
+        </Link>
       </>
     </div>
   );

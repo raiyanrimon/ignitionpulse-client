@@ -17,6 +17,11 @@ const ProductReview = () => {
       return res.data;
     },
   });
+  const sortedProducts = [...products].sort((a, b) => {
+    if (a.status === "pending" && b.status !== "pending") return -1;
+    if (b.status === "pending" && a.status !== "pending") return 1;
+    return 0;
+  });
   const handleAccept = (product) => {
     axiosSecure.patch(`/products/accept/${product._id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
@@ -70,19 +75,21 @@ const ProductReview = () => {
               <th>#</th>
               <th>Product Name</th>
               <th>View Details</th>
+              <th>status</th>
               <th>Make Featured</th>
               <th>Accept</th>
               <th>Reject</th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => (
+            {sortedProducts.map((product, index) => (
               <tr key={product._id}>
                 <th>{index + 1}</th>
                 <td>{product?.name}</td>
                 <td>
                   <Link to={`/products/${product._id}`}>Details</Link>
                 </td>
+                <td>{product.status}</td>
                 <td>
                   {product.isFeatured === "featured" ? (
                     "Featured"
